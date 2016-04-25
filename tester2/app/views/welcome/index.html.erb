@@ -84,17 +84,25 @@ input {
 			<h1> Graduate School </h1>
 			<h2> Planning the Next Milestone</h2>
 			<h3> Search</h3>
-			<form action="demo_form.asp">
-		  		College <input type="text" name="collge"><br>
-		  		<br />
-		  		Department <input type="text" name="departemnt"><br>
-		  		<br />
-		  		Program <input type="text" name="program"><br>
-		  		<br />
-		  		Faculty <input type="text" name="faculty"><br>
-		  		<br />
-		  		<a href="#" class="logandsign">Search</a>
-		</form>
+			
+			
+			
+	 <%= form_for(:welcome, url: login_path) do |f| %> 
+	  <%= f.text_field :College, :placeholder => "College" %> 
+	  <br />
+	  <br />
+	  <%= f.text_field :Department, :placeholder => "Department" %> 
+	  <br />
+	  <br />
+	  <%= f.text_field :Program, :placeholder => "Program" %> 
+	  <br />
+	  <br />
+	  <%= f.text_field :Faculty, :placeholder => "Faculty" %> 
+	  <br />
+	  <br />
+	  <%= f.submit "Search", class: "testersignup" %>
+	<% end %>
+		
 		
 		</div>
 		
