@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/login'
+
+  get 'users/signup'
+
   get 'welcome/index'
 
   resources :clients
@@ -56,4 +60,13 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  get 'signup'  => 'users#signup' 
+  resources :users
+  
+  get 'login' => 'sessions#login'
+  resources :sessions
+  
+  post 'login' => 'sessions#create'
+  
+  delete 'logout' => 'sessions#destroy'
 end

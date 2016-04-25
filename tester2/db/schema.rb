@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422050908) do
+ActiveRecord::Schema.define(version: 20160425171818) do
 
   create_table "CRate", id: false, force: :cascade do |t|
     t.integer "CID",     limit: 4
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20160422050908) do
     t.varchar "UPassword",     limit: 50
     t.varchar "CurrentStatus", limit: 50
     t.integer "AtYear",        limit: 4
+    t.string  "firstname",     limit: 4000
   end
 
   create_table "WorkIn", id: false, force: :cascade do |t|
@@ -82,6 +83,23 @@ ActiveRecord::Schema.define(version: 20160422050908) do
     t.text     "remark",     limit: 2147483647
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
+  end
+
+  create_table "tester2s", force: :cascade do |t|
+    t.string   "Name",       limit: 4000
+    t.string   "username",   limit: 4000
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "first_name",      limit: 4000
+    t.string   "last_name",       limit: 4000
+    t.string   "email",           limit: 4000
+    t.string   "password_digest", limit: 4000
+    t.string   "username",        limit: 4000
   end
 
   add_foreign_key "CRate", "College", column: "CID", primary_key: "CID", name: "FK__CRate__CID__0C50D423"
