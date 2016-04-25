@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 
 <style>
 
@@ -10,7 +9,7 @@ body {
  	text-align: right;
  	margin: 10px;
  }
-#login {
+#section {
 	position: absolute;
     top: 50%;
     left: 50%;
@@ -26,7 +25,7 @@ input {
 	height: 30px;
 }
 
-.testersignup {
+.logandsign {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -44,7 +43,7 @@ input {
 	text-shadow:0px 1px 0px #ffffff;
 }
 
-.testersignup:hover {
+.logandsign:hover {
 	background-color: #D3D3D3;
 	color: #000000;
 }
@@ -53,36 +52,10 @@ input {
 	position:relative;
 	top:1px;
 }
-.aboutus {
-	color: #3A3A38;
-}
-.aboutus:hover {
-	background-color: transparent;
-	color: #8B8970;
-}
 
-
-nav {
-	background-color: #FFFFAA;
-	color: #3A3A38;
-}
-
-.logout {
-	color: #3A3A38;
-}
-
-.logout:hover {
-	background-color: transparent;
-	color: #8B8970;
-}
 </style>
-
 <html>
-  <head>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-    
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie Flower">
+	<head><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie Flower">
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects Daughter">
       <style>
       body {
@@ -90,29 +63,24 @@ nav {
   		font-family: 'Indie Flower', serif;
         font-size: 25px;
  	  }
- 	  .testersignup {
+ 	  .logandsign {
  	  	font-family: 'Architects Daughter', serif;
  	  	font-size: 15px; 
  	  }
  	  </style>  
+      </head>
       
-  </head>
-  <nav>
-         	<% if current_user %> 
-			  <ul> 
-			    Logged In As: <%= current_user.username %>&nbsp;&nbsp;&nbsp;<%= link_to "Log out", logout_path, method: "delete", :class => "logout"%>
-			
-			    <br />
-			    <a ref = "#" class = "aboutus">About Us</a>
-			  </ul> 
-			<% else %> 
-				<ul>
-					<a ref = "#" class = "aboutus">About Us</a>
-				</ul>
-			<% end %>
-          
-        </nav>
-
-    <%= yield %>
+      
+		<body>
+		
+		<div id = "section">
+			<h1> Graduate School </h1>
+			<h2> Planning the Next Milestone</h2>
+		  	<a href="login" class="logandsign">Log In</a>
+		  	<a href="signup" class="logandsign">Sign Up</a>
+		
+		</div>
+		
+		</body>
 
 </html>

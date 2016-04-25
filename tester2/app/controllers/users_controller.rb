@@ -7,9 +7,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params) 
     if @user.save 
       session[:user_id] = @user.id 
-      redirect_to '/' 
+      redirect_to '/start' 
     else 
-      redirect_to '/signup' 
+      if params[:commit] == "Go to Main"
+        redirect_to '/'
+      else
+        redirect_to '/signup' 
+      end
     end 
   end
   

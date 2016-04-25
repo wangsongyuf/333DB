@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'starting/new'
+
+  get 'starting/index'
+
+  get 'starting/start'
+
   get 'sessions/login'
 
   get 'users/signup'
@@ -67,6 +73,10 @@ Rails.application.routes.draw do
   resources :sessions
   
   post 'login' => 'sessions#create'
-  
+ 
   delete 'logout' => 'sessions#destroy'
+  
+  get 'start' => 'starting#start'
+  
+  get 'index' => 'starting#index'
 end

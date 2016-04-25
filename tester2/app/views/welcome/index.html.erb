@@ -53,10 +53,7 @@ input {
 	top:1px;
 }
 
-.aboutus:hover {
-	background-color: transparent;
-	color: #000000;
-}
+
 </style>
 <html>
 	<head><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie Flower">
@@ -74,36 +71,13 @@ input {
  	  </style>  
       </head>
       
-      <nav>
-      	<a href = "#" class="aboutus"> About us </a>
-      </nav>
-      
 		<body>
 		
 		<div id = "section">
 			<h1> Graduate School </h1>
 			<h2> Planning the Next Milestone</h2>
-			<h3> Search</h3>
-			
-			
-			
-	 <%= form_for(:welcome, url: login_path) do |f| %> 
-	  <%= f.text_field :College, :placeholder => "College" %> 
-	  <br />
-	  <br />
-	  <%= f.text_field :Department, :placeholder => "Department" %> 
-	  <br />
-	  <br />
-	  <%= f.text_field :Program, :placeholder => "Program" %> 
-	  <br />
-	  <br />
-	  <%= f.text_field :Faculty, :placeholder => "Faculty" %> 
-	  <br />
-	  <br />
-	  <%= f.submit "Search", class: "testersignup" %>
-	<% end %>
-		
-		
+		  	<a href="login" class="logandsign">Log In</a>
+		  	<a href="signup" class="logandsign">Sign Up</a>
 		</div>
 		
 		</body>

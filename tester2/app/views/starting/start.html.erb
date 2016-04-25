@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-
 <style>
-
 body {
   text-align: center;
  }
@@ -10,7 +7,7 @@ body {
  	text-align: right;
  	margin: 10px;
  }
-#login {
+#section {
 	position: absolute;
     top: 50%;
     left: 50%;
@@ -18,15 +15,13 @@ body {
     transform: translate(-50%, -50%);
     margin: 0 auto; 
 }
-
 input {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;	
 	height: 30px;
 }
-
-.testersignup {
+.logandsign {
 	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -43,46 +38,17 @@ input {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
 }
-
-.testersignup:hover {
+.logandsign:hover {
 	background-color: #D3D3D3;
 	color: #000000;
 }
-
 .logandsign:active {
 	position:relative;
 	top:1px;
 }
-.aboutus {
-	color: #3A3A38;
-}
-.aboutus:hover {
-	background-color: transparent;
-	color: #8B8970;
-}
-
-
-nav {
-	background-color: #FFFFAA;
-	color: #3A3A38;
-}
-
-.logout {
-	color: #3A3A38;
-}
-
-.logout:hover {
-	background-color: transparent;
-	color: #8B8970;
-}
 </style>
-
 <html>
-  <head>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-    
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie Flower">
+	<head><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie Flower">
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects Daughter">
       <style>
       body {
@@ -90,29 +56,41 @@ nav {
   		font-family: 'Indie Flower', serif;
         font-size: 25px;
  	  }
- 	  .testersignup {
+ 	  .logandsign {
  	  	font-family: 'Architects Daughter', serif;
  	  	font-size: 15px; 
  	  }
  	  </style>  
+      </head>
       
-  </head>
-  <nav>
-         	<% if current_user %> 
-			  <ul> 
-			    Logged In As: <%= current_user.username %>&nbsp;&nbsp;&nbsp;<%= link_to "Log out", logout_path, method: "delete", :class => "logout"%>
+		<body>
+		
+		<div id = "section">
+			<h1> Graduate School </h1>
+			<h2> Planning the Next Milestone</h2>
+			<h3> Search</h3>
 			
-			    <br />
-			    <a ref = "#" class = "aboutus">About Us</a>
-			  </ul> 
-			<% else %> 
-				<ul>
-					<a ref = "#" class = "aboutus">About Us</a>
-				</ul>
-			<% end %>
-          
-        </nav>
-
-    <%= yield %>
+			
+			
+	 <%= form_for(:welcome, url: login_path) do |f| %> 
+	  <%= f.text_field :College, :placeholder => "College" %> 
+	  <br />
+	  <br />
+	  <%= f.text_field :Department, :placeholder => "Department" %> 
+	  <br />
+	  <br />
+	  <%= f.text_field :Program, :placeholder => "Program" %> 
+	  <br />
+	  <br />
+	  <%= f.text_field :Faculty, :placeholder => "Faculty" %> 
+	  <br />
+	  <br />
+	  <%= f.submit "Search", class: "testersignup" %>
+	<% end %>
+		
+		
+		</div>
+		
+		</body>
 
 </html>
