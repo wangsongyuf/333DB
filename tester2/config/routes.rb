@@ -73,10 +73,14 @@ Rails.application.routes.draw do
   resources :sessions
   
   post 'login' => 'sessions#create'
+  
+  post 'start' => 'starting#start'
  
   delete 'logout' => 'sessions#destroy'
   
   get 'start' => 'starting#start'
   
   get 'index' => 'starting#index'
+  
+  get 'results' => 'starting#results'
 end

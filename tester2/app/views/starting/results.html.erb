@@ -1,0 +1,42 @@
+<style>
+	td {
+		width: 50px;
+		border: solid;
+	}
+	
+	th {
+		width: 50px;
+		border: solid;
+	}
+</style>
+<% @test.each do |k, v| %>
+<table style="table-layout: fixed; width:400; border-style: solid;">
+	<tr>
+	<% k.each do |key|%>
+	  
+	    <th><%= key %></th>
+	 
+	  <%end%>
+	   </tr>
+	  <% if v.nil?%>
+	  <tr>
+	  <% k.each do |key|%>
+	  
+	    <td></td>
+	  
+	  <%end%>
+	  </tr>
+	  <%else%>
+	  <tr>
+	  <% v.each do |val|%>
+	  
+	    <td><%= val %></td>
+	  <%end%>
+	  <tr>
+	  <%end%>
+	  </table>
+	  <h1> </h1>
+	  <h1> </h1>
+	  <h1> </h1>
+<% end %>
+</table>

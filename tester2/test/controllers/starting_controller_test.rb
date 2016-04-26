@@ -1,13 +1,13 @@
 require 'test_helper'
 
 class StartingControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
+  test "should get start" do
+    get :start
     assert_response :success
   end
 
-  test "should get index" do
-    get :index
+  test "should get results" do
+    get :results
     assert_response :success
   end
 
