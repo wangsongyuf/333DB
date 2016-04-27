@@ -1,7 +1,7 @@
 class StartingController < ApplicationController
   
-  before_action :require_user, only: [:index, :start]
-  
+  before_action :require_user, :index
+
   @@table = Hash.new()
     
   def start
