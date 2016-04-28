@@ -63,6 +63,7 @@ input {
 
 
 nav {
+	top: 1%;
 	background-color: #FFFFAA;
 	color: #3A3A38;
 }
@@ -75,6 +76,16 @@ nav {
 	background-color: transparent;
 	color: #8B8970;
 }
+
+dialog {  
+    width: 250px;  
+    background:#F8F8F8;
+    border: 1px solid #dadada;
+    padding: 5px 10px 20px 20px;
+    top: 5%;
+    left: center;
+}  
+
 </style>
 
 <html>
@@ -94,6 +105,11 @@ nav {
  	  	font-family: 'Architects Daughter', serif;
  	  	font-size: 15px; 
  	  }
+ 	  
+ 	  dialog {
+ 	  	font-family: 'Cabin', serif;
+ 	  	font-size: 15px; 
+ 	  }
  	  </style>  
       
   </head>
@@ -103,16 +119,34 @@ nav {
 			    Logged In As: <%= current_user.username %>&nbsp;&nbsp;&nbsp;<%= link_to "Log out", logout_path, method: "delete", :class => "logout"%>
 			
 			    <br />
-			    <a ref = "#" class = "aboutus">About Us</a>
+			    
 			  </ul> 
-			<% else %> 
-				<ul>
-					<a ref = "#" class = "aboutus">About Us</a>
-				</ul>
 			<% end %>
-          
-        </nav>
-
-    <%= yield %>
+			<a href="#" id="show">About Us</a>
+			</nav>
+  <%= yield %>
+  		
+          		<dialog id="window">  
+				    <h3>About Us</h3>  
+				    <p>Some Information about This Project</p>  
+				    <a href="" id="exit">Close</a>
+				</dialog>
+				
+         
+    
 
 </html>
+
+<script>
+
+(function() {  
+    var dialog = document.getElementById('window');  
+    document.getElementById('show').onclick = function() {  
+        dialog.show();  
+    };  
+    document.getElementById('exit').onclick = function() {
+        dialog.close();  
+    };  
+})();
+
+</script>

@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   def signup
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if @current_user
+      redirect_to '/start'
+    else
       @user = User.new
+    end
   end
   
   def create 
