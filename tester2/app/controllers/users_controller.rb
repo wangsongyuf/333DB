@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       if params[:commit] == "Go to Main"
         redirect_to '/'
       else
-        redirect_to '/signup' 
+        render 'signup'
       end
     end 
   end

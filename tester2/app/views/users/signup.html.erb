@@ -1,118 +1,112 @@
-
 <style>
-
-body {
-  text-align: center;
- }
- 
- nav {
- 	text-align: right;
- 	margin: 10px;
- }
-#login {
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    margin: 0 auto; 
-}
-
-input {
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;	
-	height: 30px;
-}
-
-.testersignup {
-	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background-color:transparent;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #000000;
-	display:inline-block;
-	cursor:pointer;
-	color:#000000;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-}
-
-.testersignup:hover {
-	background-color: #D3D3D3;
-	color: #000000;
-}
-
-.logandsign:active {
-	position:relative;
-	top:1px;
-}
-
-.aboutus:hover {
-	background-color: transparent;
-	color: #000000;
-}
+	body {
+		text-align:center;
+	}
+	nav {
+		text-align:right;
+		margin:10px;
+	}
+	#login {
+		position:absolute;
+		top:50%;
+		left:50%;
+		margin-right:-50%;
+		transform:translate(-50%, -50%);
+		margin:0 auto;
+	}
+	input {
+		-webkit-border-radius:5px;
+		-moz-border-radius:5px;
+		border-radius:5px;
+		height:30px;
+	}
+	.testersignup {
+		-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+		box-shadow:inset 0px 1px 0px 0px #ffffff;
+		background-color:transparent;
+		-moz-border-radius:6px;
+		-webkit-border-radius:6px;
+		border-radius:6px;
+		border:1px solid #000000;
+		display:inline-block;
+		cursor:pointer;
+		color:#000000;
+		font-weight:bold;
+		padding:6px 24px;
+		text-decoration:none;
+		text-shadow:0px 1px 0px #ffffff;
+	}
+	.testersignup:hover {
+		background-color:#D3D3D3;
+		color:#000000;
+	}
+	.logandsign:active {
+		position:relative;
+		top:1px;
+	}
+	.aboutus:hover {
+		background-color:transparent;
+		color:#000000;
+	}
 </style>
 
 <html>
-	<head><link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie Flower">
-      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects Daughter">
-      <style>
-      body {
-  		text-align: center;
-  		font-family: 'Indie Flower', serif;
-        font-size: 25px;
- 	  }
- 	  .testersignup {
- 	  	font-family: 'Architects Daughter', serif;
- 	  	font-size: 15px; 
- 	  }
- 	  </style>  
-      </head>
-      
-		<body>
+	<head>
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Indie Flower">
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects Daughter">
+		<style>
+			body {
+				text-align:center;
+				font-family:'Indie Flower',serif;
+				font-size:25px;
+			}
+			.testersignup {
+				font-family:'Architects Daughter',serif;
+				font-size:15px;
+			}
+		</style>
+	</head>
 
-<div class="login">
-  <div class="container">
-  	<h1> Graduate School </h1>
-	<h2> Planning the Next Milestone</h2>
-    <div class="form">
-	
-    <h1>Sign up</h1>
+	<body>
 
-    <%= form_for(@user) do |f| %>
-      <%= f.text_field :first_name, :placeholder => "First name" %>
-      <br />
-      <br />
-      <%= f.text_field :last_name, :placeholder => "Last name" %>
-      <br />
-      <br />
-      <%= f.email_field :email, :placeholder => "Email" %>
-      <br />
-      <br />
-      <%= f.text_field :username, :placeholder => "Username" %>
-      <br />
-      <br />
-      <%= f.password_field :password, :placeholder => "Password" %>
-      <br />
-      <br />
-       <%= f.password_field :passwordconfirm, :placeholder => "Confirm Password" %>
-      <br />
-      <br />
-      <%= f.submit "Create an account", class: "testersignup" %>
-      <br />
-      <br />
-	  <%= f.submit "Go to Main", class: "testersignup" %>
-    <% end %>
+		<div class="login">
+			<div class="container">
+				<h1> Graduate School </h1>
+				<h2> Planning the Next Milestone</h2>
+				<div class="form">
 
-  
-    </div>
-  </div>
-</div>
-</body>
+					<h1>Sign up</h1>
+		
+					<%= form_for(@user) do |f| %>
+					<%= render 'shared/error_messages' %>
+					
+					<%= f.text_field :first_name, :placeholder => "First name" %>
+					<br />
+					<br />
+					<%= f.text_field :last_name, :placeholder => "Last name" %>
+					<br />
+					<br />
+					<%= f.email_field :email, :placeholder => "Email" %>
+					<br />
+					<br />
+					<%= f.text_field :username, :placeholder => "Username" %>
+					<br />
+					<br />
+					<%= f.password_field :password, :placeholder => "Password" %>
+					<br />
+					<br />
+					<%= f.password_field :passwordconfirm, :placeholder => "Confirm Password" %>
+					<br />
+					<br />
+					<%= f.submit "Create an account", class: "testersignup" %>
+					<br />
+					<br />
+					<%= f.submit "Go to Main", class: "testersignup" %>
+					<% end %>
+
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
