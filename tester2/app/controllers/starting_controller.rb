@@ -2,7 +2,6 @@ class StartingController < ApplicationController
   
   before_action :require_user, :index
 
-  @@table = Hash.new()
     
   def start
     if params[:commit] == "Search"
@@ -29,10 +28,10 @@ class StartingController < ApplicationController
         @st=@st+'@faculty = '+'\''+params[:starting][:Faculty]+'\''
       end
       @result = @connection.exec_query(@st)
+      puts @result
      
-      @@table.merge!(@result[0])
           
-      redirect_to '/results'
+      render :results
     end
   end
 
@@ -40,9 +39,6 @@ class StartingController < ApplicationController
     
   end
   
-  def results
-    @test = Hash.new
-    @test.merge!(@@table)
-  end
+
   end
 
