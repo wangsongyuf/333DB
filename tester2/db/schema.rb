@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425171818) do
+ActiveRecord::Schema.define(version: 20160506060220) do
 
   create_table "CRate", id: false, force: :cascade do |t|
     t.integer "CID",     limit: 4
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20160425171818) do
 
   create_table "College", primary_key: "CID", force: :cascade do |t|
     t.varchar "Name",                         limit: 50
-    t.integer "Randking",                     limit: 4
+    t.integer "Ranking",                      limit: 4
     t.money   "Tuition",                                  precision: 19, scale: 4
     t.varchar "FundingOption",                limit: 50
     t.integer "AverageStandardizedTestScore", limit: 4
@@ -76,15 +76,6 @@ ActiveRecord::Schema.define(version: 20160425171818) do
     t.integer "DID", limit: 4
   end
 
-  create_table "clients", force: :cascade do |t|
-    t.string   "name",       limit: 4000
-    t.string   "address",    limit: 4000
-    t.string   "email",      limit: 4000
-    t.text     "remark",     limit: 2147483647
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-  end
-
   create_table "tester2s", force: :cascade do |t|
     t.string   "Name",       limit: 4000
     t.string   "username",   limit: 4000
@@ -100,6 +91,8 @@ ActiveRecord::Schema.define(version: 20160425171818) do
     t.string   "email",           limit: 4000
     t.string   "password_digest", limit: 4000
     t.string   "username",        limit: 4000
+    t.string   "CurrentStatus",   limit: 4000
+    t.integer  "AtYear",          limit: 4
   end
 
   add_foreign_key "CRate", "College", column: "CID", primary_key: "CID", name: "FK__CRate__CID__0C50D423"

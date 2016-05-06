@@ -1,13 +1,13 @@
 
 <html>
 <% if @user.errors.any? %>
-  <div id="error_explanation">
+  <div id="error_explanation" style = "color: red">
     <div class="alert alert-danger">
-      The form contains <%= pluralize(@user.errors.count, "error") %>.
+      <strong><%= pluralize(@user.errors.count, "error") %> detected.</strong>
     </div>
     <ul>
     <% @user.errors.full_messages.each do |msg| %>
-      <p><%= msg %></p>
+      <a><%= msg %></a><br />
     <% end %>
     </ul>
   </div>

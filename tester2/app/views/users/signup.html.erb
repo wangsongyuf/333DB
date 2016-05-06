@@ -1,4 +1,6 @@
 <style>
+	
+
 	body {
 		text-align:center;
 	}
@@ -20,6 +22,11 @@
 		border-radius:5px;
 		height:30px;
 	}
+	
+	.field_with_errors input {
+		border: 2px solid red;
+	}
+	
 	.testersignup {
 		-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
 		-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
@@ -81,22 +88,22 @@
 					<%= form_for(@user) do |f| %>
 					<%= render 'shared/error_messages' %>
 					
-					<%= f.text_field :first_name, :placeholder => "First name" %>
+					<%= f.text_field :first_name, :placeholder => "First name", class: "form-control" %>
 					<br />
 					<br />
-					<%= f.text_field :last_name, :placeholder => "Last name" %>
+					<%= f.text_field :last_name, :placeholder => "Last name", class: "form-control" %>
 					<br />
 					<br />
-					<%= f.email_field :email, :placeholder => "Email" %>
+					<%= f.email_field :email, :placeholder => "Email", class: "form-control" %>
 					<br />
 					<br />
-					<%= f.text_field :username, :placeholder => "Username" %>
+					<%= f.text_field :username, :placeholder => "Username", class: "form-control" %>
 					<br />
 					<br />
-					<%= f.password_field :password, :placeholder => "Password" %>
+					<%= f.password_field :password, :placeholder => "Password", class: "form-control" %>
 					<br />
 					<br />
-					<%= f.password_field :passwordconfirm, :placeholder => "Confirm Password" %>
+					<%= f.password_field :passwordconfirm, :placeholder => "Confirm Password", class: "form-control" %>
 					<br />
 					<br />
 					<%= f.submit "Create an account", class: "testersignup" %>

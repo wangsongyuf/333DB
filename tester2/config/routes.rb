@@ -83,4 +83,16 @@ Rails.application.routes.draw do
   get 'index' => 'starting#index'
   
   get 'results' => 'starting#results'
+  
+  get 'profile' => 'users#profile'
+  resources :users
+  
+  get 'users/destroy_account' => 'users#destroy_account'
+  
+  delete '/profile' => 'users#destroy_account'
+  
+  get 'modifyCurrentStatus' => 'users#modifyCurrentStatus'
+  resources :users
+  
+  post 'modifyCurrentStatus' => 'users#modifyCurrentStatus'
 end

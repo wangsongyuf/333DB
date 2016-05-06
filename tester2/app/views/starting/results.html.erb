@@ -34,31 +34,18 @@
 </style>
 
 
-<% @result.each do |k, v| %>
+<% @result.each do |p| %>
 <table style="table-layout: fixed; width:400; border-style: solid;">
 	<tr>
-	<% k.each do |key|%>
-	  
-	    <th><%= key %></th>
-	 
-	  <%end%>
-	   </tr>
-	  <% if v.nil?%>
-	  <tr>
-	  <% k.each do |key|%>
-	  
-	    <td></td>
-	  
-	  <%end%>
-	  </tr>
-	  <%else%>
-	  <tr>
-	  <% v.each do |val|%>
-	  
-	    <td><%= val %></td>
-	  <%end%>
-	  <tr>
-	  <%end%>
+	<% p.keys.each do |k|%>
+		<th><%= k %></th>
+	<% end %>
+	</tr>
+	<tr>
+	<% p.values.each do |v|%>
+		<td><%= v %></td>
+	<% end %>
+	</tr>
 	  </table>
 	  <h1> </h1>
 	  <h1> </h1>

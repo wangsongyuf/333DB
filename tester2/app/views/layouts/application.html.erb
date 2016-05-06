@@ -1,104 +1,89 @@
 <!DOCTYPE html>
 
 <style>
-#error_explanation {
-	  color: red;
-	  ul {
-	    color: red;
-	    margin: 0 0 30px 0;
-	  }
-	}
-
-	.field_with_errors {
-	  @extend .has-error;
-	  .form-control {
-	    color: $state-danger-text;
-	  }
-	}
 	
-body {
-  text-align: center;
- }
- 
- nav {
- 	text-align: right;
- 	margin: 10px;
- }
-#login {
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    margin: 0 auto; 
-}
+	body {
+		text-align: center;
+	}
 
-input {
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;	
-	height: 30px;
-}
+	nav {
+		text-align: right;
+		margin: 10px;
+	}
+	#login {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-right: -50%;
+		transform: translate(-50%, -50%);
+		margin: 0 auto;
+	}
 
-.testersignup {
-	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
-	box-shadow:inset 0px 1px 0px 0px #ffffff;
-	background-color:transparent;
-	-moz-border-radius:6px;
-	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #000000;
-	display:inline-block;
-	cursor:pointer;
-	color:#000000;
-	font-weight:bold;
-	padding:6px 24px;
-	text-decoration:none;
-	text-shadow:0px 1px 0px #ffffff;
-}
+	input {
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		height: 30px;
+	}
 
-.testersignup:hover {
-	background-color: #D3D3D3;
-	color: #000000;
-}
+	.testersignup {
+		-moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+		-webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+		box-shadow: inset 0px 1px 0px 0px #ffffff;
+		background-color: transparent;
+		-moz-border-radius: 6px;
+		-webkit-border-radius: 6px;
+		border-radius: 6px;
+		border: 1px solid #000000;
+		display: inline-block;
+		cursor: pointer;
+		color: #000000;
+		font-weight: bold;
+		padding: 6px 24px;
+		text-decoration: none;
+		text-shadow: 0px 1px 0px #ffffff;
+	}
 
-.logandsign:active {
-	position:relative;
-	top:1px;
-}
-.aboutus {
-	color: #3A3A38;
-}
-.aboutus:hover {
-	background-color: transparent;
-	color: #8B8970;
-}
+	.testersignup:hover {
+		background-color: #D3D3D3;
+		color: #000000;
+	}
 
+	.logandsign:active {
+		position: relative;
+		top: 1px;
+	}
+	.aboutus {
+		color: #3A3A38;
+	}
+	.aboutus:hover {
+		background-color: transparent;
+		color: #8B8970;
+	}
 
-nav {
-	top: 1%;
-	background-color: #FFFFAA;
-	color: #3A3A38;
-}
+	nav {
+		top: 1%;
+		background-color: #FFFFAA;
+		color: #3A3A38;
+	}
 
-.logout {
-	color: #3A3A38;
-}
+	.logout {
+		color: #3A3A38;
+	}
 
-.logout:hover {
-	background-color: transparent;
-	color: #8B8970;
-}
+	.logout:hover {
+		background-color: transparent;
+		color: #8B8970;
+	}
 
-dialog {  
-    width: 250px;  
-    background:#F8F8F8;
-    border: 1px solid #dadada;
-    padding: 5px 10px 20px 20px;
-    top: 5%;
-    left: center;
-}  
+	dialog {
+		width: 250px;
+		background: #F8F8F8;
+		border: 1px solid #dadada;
+		padding: 5px 10px 20px 20px;
+		top: 5%;
+		left: center;
+	}
 
 </style>
 
@@ -131,7 +116,7 @@ dialog {
   <nav>
          	<% if current_user %> 
 			  <ul> 
-			    Logged In As: <%= current_user.username %>&nbsp;&nbsp;&nbsp;<%= link_to "Log out", logout_path, method: "delete", :class => "logout"%>
+			    Logged In As: <a href="/profile"><%= current_user.username %></a>&nbsp;&nbsp;&nbsp;<%= link_to "Log out", logout_path, method: "delete", :class => "logout"%>
 			
 			    <br />
 			    

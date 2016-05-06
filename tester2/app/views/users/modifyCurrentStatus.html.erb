@@ -1,0 +1,23 @@
+<html>
+	<div class="login">
+			<div class="container">
+				<h1> <%= @current_user.username%>'s Profile </h1>
+				<div class="form">
+
+					<h1>Modify Your Current Status</h1>
+		
+					<%= form_for(:status) do |f| %>
+					
+					<%= f.text_field :currentStatus, :placeholder => "Current Status", class: "form-control" %>
+					<br />
+					<br />
+					<%= f.submit "Modify", class: "testersignup" %>
+					<br />
+					<br />
+					<%= f.submit "Go to Main", class: "testersignup" %>
+					<% end %>
+
+				</div>
+			</div>
+		</div>
+</html>

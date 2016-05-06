@@ -1,0 +1,21 @@
+
+<html>
+	<h1 align="left"><%= @current_user.username %>'s Profile</h1>
+	<div class = "Profile" align="left">
+	<% @result.each do |p| %>
+	<% p.each do |k, v|%>
+		<% if k.eql?("CurrentStatus")%>
+		<strong>Current Status</strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href="/modifyCurrentStatus" style="size: 10px">Modify Your Current Status</a><br />
+		<% elsif k.eql?("AtYear")%>
+		<strong>At Year</strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href="/modifyYear" style="size: 10px">Modify Your Year</a><br />
+		<% else %>
+		<% wheretogo = "/modify" + k %>
+		<strong><%= k %></strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href=<%= wheretogo%> style="size: 10px">Modify Your <%= k %></a><br />
+		<% end %>
+	<% end %>
+<% end %>
+<div class="Abortion">
+	<a data-confirm="Are you sure?" data-method="delete"><%= button_to "Abort Your Account", { :controller => "users", :action => "destroy_account"}, class: "testersignup" %></a>
+</div>
+
+</html>
