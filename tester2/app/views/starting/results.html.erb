@@ -33,9 +33,12 @@
 	}
 </style>
 
-
-<% @result.each do |p| %>
-<table style="table-layout: fixed; width:400; border-style: solid;">
+<% if @rslt.is_a?(Array) %>
+	<% @rslt.each do |p| %>
+	
+	<% if (!p.nil?) && !p.empty? %>
+		<% puts p %>
+		<table style="table-layout: fixed; width:400; border-style: solid;">
 	<tr>
 	<% p.keys.each do |k|%>
 		<th><%= k %></th>
@@ -50,7 +53,25 @@
 	  <h1> </h1>
 	  <h1> </h1>
 	  <h1> </h1>
+	  <% end %>
+	  <% end %>
+<% elsif @rslt.is_a?(Hash)%>
+	<table style="table-layout: fixed; width:400; border-style: solid;">
+	<tr>
+	<% @rslt.keys.each do |k|%>
+		<th><%= k %></th>
+	<% end %>
+	</tr>
+	<tr>
+	<% @rslt.values.each do |v|%>
+		<td><%= v %></td>
+	<% end %>
+	</tr>
+	  </table>
+	  <h1> </h1>
+	  <h1> </h1>
+	  <h1> </h1>
+	  
 <% end %>
-</table>
 
 <a href="/start" class="button">Go to Main Search</a>
