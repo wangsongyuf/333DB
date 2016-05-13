@@ -165,7 +165,7 @@ class UsersController < ApplicationController
       else
         redirect_to '/'
       end
-      @st = @st + '@Username = ' + '\'' + params[:status][:username] + '\''
+      @st = @st + '@Username2 = ' + '\'' + params[:status][:username] + '\''
       @result = @connection.exec_query(@st)
       puts @result
       redirect_to '/profile'
