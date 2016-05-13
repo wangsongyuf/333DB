@@ -66,33 +66,59 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  get 'signup'  => 'users#signup' 
+  get 'signup'  => 'users#signup'
   resources :users
-  
+
   get 'login' => 'sessions#login'
   resources :sessions
-  
+
   post 'login' => 'sessions#create'
-  
+
   post 'start' => 'starting#start'
- 
+
   delete 'logout' => 'sessions#destroy'
-  
+
   get 'start' => 'starting#start'
-  
+
   get 'index' => 'starting#index'
-  
+
   get 'results' => 'starting#results'
-  
+
   get 'profile' => 'users#profile'
   resources :users
-  
+
   get 'users/destroy_account' => 'users#destroy_account'
-  
+
   delete '/profile' => 'users#destroy_account'
-  
+
   get 'modifyCurrentStatus' => 'users#modifyCurrentStatus'
   resources :users
-  
+
   post 'modifyCurrentStatus' => 'users#modifyCurrentStatus'
+
+  get 'modifyEmail' => 'users#modifyEmail'
+  resources :users
+
+  post 'modifyEmail' => 'users#modifyEmail'
+
+  get 'modifyFirstName' => 'users#modifyFirstName'
+  resources :users
+
+  post 'modifyFirstName' => 'users#modifyFirstName'
+
+  get 'modifyLastName' => 'users#modifyLastName'
+  resources :users
+
+  post 'modifyLastName' => 'users#modifyLastName'
+
+  get 'modifyUsername' => 'users#modifyUsername'
+  resources :users
+
+  post 'modifyUsername' => 'users#modifyUsername'
+
+  get 'modifyYear' => 'users#modifyYear'
+  resources :users
+
+  post 'modifyYear' => 'users#modifyYear'
+
 end

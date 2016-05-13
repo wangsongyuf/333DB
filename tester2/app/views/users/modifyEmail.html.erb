@@ -4,11 +4,11 @@
 				<h1> <%= @current_user.username%>'s Profile </h1>
 				<div class="form">
 
-					<h1>Modify Your Year</h1>
+					<h1>Modify Your Email</h1>
 		
 					<%= form_for(:status) do |f| %>
 					
-					<%= f.text_field :currentStatus, :placeholder => "Current Year", class: "form-control" %>
+					<%= f.email_field :email, :placeholder => "Current Email", class: "form-control" %>
 					<br />
 					<br />
 					<%= f.submit "Modify", class: "testersignup" %>

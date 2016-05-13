@@ -8,6 +8,21 @@
 		<strong>Current Status</strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href="/modifyCurrentStatus" style="size: 10px">Modify Your Current Status</a><br />
 		<% elsif k.eql?("AtYear")%>
 		<strong>At Year</strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href="/modifyYear" style="size: 10px">Modify Your Year</a><br />
+		<% elsif k.eql?("first_name")%>
+		<strong>First Name</strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href="/modifyFirstName" style="size: 10px">Modify Your First Name</a><br />
+		
+		<% elsif k.eql?("last_name")%>
+		<strong>Last Name</strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href="/modifyLastName" style="size: 10px">Modify Your Last Name</a><br />
+		
+		<% elsif k.eql?("username")%>
+		<strong>Username</strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href="/modifyUsername" style="size: 10px">Modify Your Username</a><br />
+		
+		<% elsif k.eql?("email")%>
+		<strong>Email</strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href="/modifyEmail" style="size: 10px">Modify Your Email</a><br />
+		
+		
+		
+		
 		<% else %>
 		<% wheretogo = "/modify" + k %>
 		<strong><%= k %></strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href=<%= wheretogo%> style="size: 10px">Modify Your <%= k %></a><br />
