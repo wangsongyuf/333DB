@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506060220) do
+ActiveRecord::Schema.define(version: 20160513091442) do
 
   create_table "CRate", id: false, force: :cascade do |t|
     t.integer "CID",     limit: 4
     t.integer "UUID",    limit: 4
     t.integer "Rating",  limit: 4
-    t.varchar "Comment", limit: 50
+    t.string  "Comment", limit: 50
   end
 
   create_table "College", primary_key: "CID", force: :cascade do |t|
@@ -30,12 +30,16 @@ ActiveRecord::Schema.define(version: 20160506060220) do
     t.varchar "AtAddress",                    limit: 500
   end
 
+  add_index "College", ["Name"], name: "College_name"
+
   create_table "Department", primary_key: "DID", force: :cascade do |t|
     t.varchar "Name",  limit: 50
     t.varchar "Phone", limit: 15
     t.varchar "Email", limit: 50
     t.integer "CID",   limit: 4
   end
+
+  add_index "Department", ["Name"], name: "Department_name"
 
   create_table "FRate", id: false, force: :cascade do |t|
     t.integer "FID",     limit: 4
@@ -50,6 +54,8 @@ ActiveRecord::Schema.define(version: 20160506060220) do
     t.varchar "Email", limit: 50
   end
 
+  add_index "Faculty", ["Name"], name: "Faculty_name"
+
   create_table "Program", primary_key: "PID", force: :cascade do |t|
     t.varchar "Name",                   limit: 500
     t.integer "USNewsRanking",          limit: 4
@@ -57,6 +63,8 @@ ActiveRecord::Schema.define(version: 20160506060220) do
     t.integer "CID",                    limit: 4
     t.integer "DID",                    limit: 4
   end
+
+  add_index "Program", ["Name"], name: "Program_name"
 
   create_table "Supervise", id: false, force: :cascade do |t|
     t.integer "FID", limit: 4
@@ -76,6 +84,39 @@ ActiveRecord::Schema.define(version: 20160506060220) do
     t.integer "DID", limit: 4
   end
 
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string   "namespace",     limit: 4000
+    t.text     "body",          limit: 2147483647
+    t.string   "resource_id",   limit: 4000,       null: false
+    t.string   "resource_type", limit: 4000,       null: false
+    t.integer  "author_id",     limit: 4
+    t.string   "author_type",   limit: 4000
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string   "email",                  limit: 4000, default: "", null: false
+    t.string   "encrypted_password",     limit: 4000, default: "", null: false
+    t.string   "reset_password_token",   limit: 4000
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,    default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 4000
+    t.string   "last_sign_in_ip",        limit: 4000
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+  end
+
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+
   create_table "tester2s", force: :cascade do |t|
     t.string   "Name",       limit: 4000
     t.string   "username",   limit: 4000
@@ -94,6 +135,8 @@ ActiveRecord::Schema.define(version: 20160506060220) do
     t.string   "CurrentStatus",   limit: 4000
     t.integer  "AtYear",          limit: 4
   end
+
+  add_index "users", ["username"], name: "User_name"
 
   add_foreign_key "CRate", "College", column: "CID", primary_key: "CID", name: "FK__CRate__CID__0C50D423"
   add_foreign_key "CRate", "ThisUser", column: "UUID", primary_key: "UUID", name: "FK__CRate__UUID__0D44F85C"

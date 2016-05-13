@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  CID: 1
+  UUID: 1
+  Rating: 1
+  Comment: 
+
+two:
+  CID: 1
+  UUID: 1
+  Rating: 1
+  Comment: 
