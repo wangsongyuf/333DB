@@ -78,7 +78,7 @@ class UsersController < ApplicationController
       puts @result
       redirect_to '/profile'
     elsif params[:commit] == "Go to Main"
-      redirect_to '/'
+      redirect_to '/start'
     end
   end
 
@@ -101,7 +101,7 @@ class UsersController < ApplicationController
       puts @result
       redirect_to '/profile'
     elsif params[:commit] == "Go to Main"
-      redirect_to '/'
+      redirect_to '/start'
     end
   end
 
@@ -124,7 +124,7 @@ class UsersController < ApplicationController
       puts @result
       redirect_to '/profile'
     elsif params[:commit] == "Go to Main"
-      redirect_to '/'
+      redirect_to '/start'
     end
   end
 
@@ -147,7 +147,7 @@ class UsersController < ApplicationController
       puts @result
       redirect_to '/profile'
     elsif params[:commit] == "Go to Main"
-      redirect_to '/'
+      redirect_to '/start'
     end
   end
 
@@ -170,7 +170,7 @@ class UsersController < ApplicationController
       puts @result
       redirect_to '/profile'
     elsif params[:commit] == "Go to Main"
-      redirect_to '/'
+      redirect_to '/start'
     end
   end
 
@@ -193,7 +193,7 @@ class UsersController < ApplicationController
       puts @result
       redirect_to '/profile'
     elsif params[:commit] == "Go to Main"
-      redirect_to '/'
+      redirect_to '/start'
     end
   end
 
