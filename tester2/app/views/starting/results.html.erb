@@ -33,7 +33,7 @@
 	}
 </style>
 
-<% if !@result1.is_a?(Hash) || !@result1.empty?%>
+<% if (!@result1.is_a?(Hash) || !@result1.empty?) && !@result1.nil?%>
 	<% @result1.each do |p| %>
 	
 	<% if (!p.nil?) && !p.empty? %>
@@ -57,7 +57,7 @@
 	  <% end %>
 <% end %>
 
-<% if !@result2.is_a?(Hash) || !@result2.empty?%>
+<% if (!@result2.is_a?(Hash) || !@result2.empty?) && !@result2.nil?%>
 	<% count = 0 %>
 	<table style="table-layout: fixed; width:400; border-style: solid;">
 	<% @result2.each do |p| %>
@@ -86,7 +86,7 @@
 	  <h1> </h1>
 <% end %>
 
-<% if !@result3.is_a?(Hash) || !@result3.empty?%>
+<% if (!@result3.is_a?(Hash) || !@result3.empty?) && !@result3.nil?%>
 	<% count = 0 %>
 	<table style="table-layout: fixed; width:400; border-style: solid;">
 	<% @result3.each do |p| %>
@@ -115,7 +115,7 @@
 	  <h1> </h1>
 <% end %>
 
-<% if !@result4.is_a?(Hash) || !@result4.empty?%>
+<% if (!@result4.is_a?(Hash) || !@result4.empty?) && !@result4.nil?%>
 	<% count = 0 %>
 	<table style="table-layout: fixed; width:400; border-style: solid;">
 	<% @result4.each do |p| %>
@@ -144,4 +144,32 @@
 	  <h1> </h1>
 <% end %>
 
+<% if (!@result5.is_a?(Hash) || !@result5.empty?) && !@result5.nil?%>
+	<% count = 0 %>
+	<table style="table-layout: fixed; width:400; border-style: solid;">
+	<% @result5.each do |p| %>
+	
+	<% if (!p.nil?) && !p.empty? %>
+		<% puts p %>
+	<% if count == 0 %>
+	<tr>
+	<% p.keys.each do |k|%>
+		<th><%= k %></th>
+	<% end %>
+	</tr>
+	<% count = count + 1 %>
+	<% end %>
+	<tr>
+	<% p.values.each do |v|%>
+		<td><%= v %></td>
+	<% end %>
+	</tr>
+	  
+	  <% end %>
+	  <% end %>
+	  </table>
+	  <h1> </h1>
+	  <h1> </h1>
+	  <h1> </h1>
+<% end %>
 <a href="/start" class="button">Go to Main Search</a>

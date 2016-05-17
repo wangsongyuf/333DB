@@ -6,8 +6,9 @@ class StartingController < ApplicationController
   @@tb = Hash.new()
 
   def start
+     @connection = ActiveRecord::Base.connection
     if params[:commit] == "Search"
-      @connection = ActiveRecord::Base.connection
+     
       if !params[:starting][:College].empty?
         @st1='exec searchcollege '+'@college ='+'\'"'+params[:starting][:College]+'"\''
         @result1 = @connection.exec_query(@st1)
@@ -28,8 +29,18 @@ class StartingController < ApplicationController
         @result4 = @connection.exec_query(@st4)
       else @result4 = {}
       end
-
-      render :results
+    render :results
+      
+      else if params[:commit] == "Check College With Rank"
+           if !params[:starting][:start].empty? and !params[:starting][:end].empty?
+              @st5='exec ranksearchcollege '+'@start = '+params[:starting][:start]+','
+              @st5=@st5+'@end = '+params[:starting][:end]
+        @result5 = @connection.exec_query(@st5)
+        puts @result5
+        end
+        render :results
+    end
+    
     end
   end
 
