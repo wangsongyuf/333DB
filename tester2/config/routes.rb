@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :supervises
+  resources :faculties
+  resources :f_rates
+  resources :colleges
+  resources :c_rates
+  resources :programs
+  resources :work_ins
+  resources :departments
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'starting/new'

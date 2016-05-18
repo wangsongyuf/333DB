@@ -32,7 +32,6 @@
 		color: #000000;
 	}
 </style>
-
 <% if (!@result1.is_a?(Hash) || !@result1.empty?) && !@result1.nil?%>
 	<% @result1.each do |p| %>
 	
@@ -150,7 +149,7 @@
 	<% @result5.each do |p| %>
 	
 	<% if (!p.nil?) && !p.empty? %>
-		<% puts p %>
+		
 	<% if count == 0 %>
 	<tr>
 	<% p.keys.each do |k|%>

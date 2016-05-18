@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
    :in => 8..16,            # between 8 and 16 characters
    :too_short => 'way too short. Should have a length of at least 8',
    :too_long => 'way too long. Should have a length of at most 16'
-
+   
+  # validates_confirmation_of :password
   validates_uniqueness_of :username,
       :message => 'Already Exist'
   validates_format_of :first_name,

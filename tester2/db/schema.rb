@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513091442) do
+ActiveRecord::Schema.define(version: 20160518084028) do
 
   create_table "CRate", id: false, force: :cascade do |t|
     t.integer "CID",     limit: 4
@@ -31,15 +31,6 @@ ActiveRecord::Schema.define(version: 20160513091442) do
   end
 
   add_index "College", ["Name"], name: "College_name"
-
-  create_table "Department", primary_key: "DID", force: :cascade do |t|
-    t.varchar "Name",  limit: 50
-    t.varchar "Phone", limit: 15
-    t.varchar "Email", limit: 50
-    t.integer "CID",   limit: 4
-  end
-
-  add_index "Department", ["Name"], name: "Department_name"
 
   create_table "FRate", id: false, force: :cascade do |t|
     t.integer "FID",     limit: 4
@@ -114,8 +105,17 @@ ActiveRecord::Schema.define(version: 20160513091442) do
     t.datetime "updated_at",                                       null: false
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  add_index "admin_users", ["email"], name: "index_users_on_email", unique: true, where: "([email] IS NOT NULL)"
+  add_index "admin_users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, where: "([reset_password_token] IS NOT NULL)"
+
+  create_table "departments", primary_key: "DID", force: :cascade do |t|
+    t.varchar "Name",  limit: 50
+    t.varchar "Phone", limit: 15
+    t.varchar "Email", limit: 50
+    t.integer "CID",   limit: 4
+  end
+
+  add_index "departments", ["Name"], name: "Department_name"
 
   create_table "tester2s", force: :cascade do |t|
     t.string   "Name",       limit: 4000
@@ -140,13 +140,13 @@ ActiveRecord::Schema.define(version: 20160513091442) do
 
   add_foreign_key "CRate", "College", column: "CID", primary_key: "CID", name: "FK__CRate__CID__0C50D423"
   add_foreign_key "CRate", "ThisUser", column: "UUID", primary_key: "UUID", name: "FK__CRate__UUID__0D44F85C"
-  add_foreign_key "Department", "College", column: "CID", primary_key: "CID", name: "FK__Department__CID__02C769E9"
   add_foreign_key "FRate", "Faculty", column: "FID", primary_key: "FID", name: "FK__FRate__FID__0F2D40CE"
   add_foreign_key "FRate", "ThisUser", column: "UUID", primary_key: "UUID", name: "FK__FRate__UUID__10216507"
   add_foreign_key "Program", "College", column: "CID", primary_key: "CID", name: "FK__Program__CID__05A3D694"
-  add_foreign_key "Program", "Department", column: "DID", primary_key: "DID", name: "FK__Program__DID__0697FACD"
+  add_foreign_key "Program", "departments", column: "DID", primary_key: "DID", name: "FK__Program__DID__0697FACD"
   add_foreign_key "Supervise", "Faculty", column: "FID", primary_key: "FID", name: "FK__Supervise__FID__14E61A24"
   add_foreign_key "Supervise", "Program", column: "PID", primary_key: "PID", name: "FK__Supervise__PID__15DA3E5D"
-  add_foreign_key "WorkIn", "Department", column: "DID", primary_key: "DID", name: "FK__WorkIn__DID__12FDD1B2"
   add_foreign_key "WorkIn", "Faculty", column: "FID", primary_key: "FID", name: "FK__WorkIn__FID__1209AD79"
+  add_foreign_key "WorkIn", "departments", column: "DID", primary_key: "DID", name: "FK__WorkIn__DID__12FDD1B2"
+  add_foreign_key "departments", "College", column: "CID", primary_key: "CID", name: "FK__Department__CID__02C769E9"
 end
