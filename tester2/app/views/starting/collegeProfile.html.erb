@@ -1,0 +1,17 @@
+<html>
+	<h1><%= @collegename%></h1>
+	<% if !@imagurl.nil? %>
+	<img src= <%= @imagurl %> />
+	<br />
+	<% end %>
+	<% @result.each do |p| %>
+		<% p.each do |k, v| %>
+			<% if k != "imgURL"%>
+				<strong><%= k%></strong> : <%= v%>
+				<br />
+			<% end %>
+		<% end %>
+	<% end %>
+
+	<%= button_to "Rate And Comment On This University", "/rateThisCollege?collegename=" + @collegename , class: "testersignup"%>
+</html>

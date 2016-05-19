@@ -1,0 +1,24 @@
+<html>
+	<h1><%= @collegenameforrate %></h1>
+	<%= form_for(:starting, url: "/rateThisCollege") do |f| %>
+	  <%= hidden_field_tag :original, @collegenameforrate  %>
+	  <strong><p>Your Rate: </p></strong>
+	  <%= f.radio_button :rate, 'norate', :checked => true %> 
+	  <%= label :rate_norate, 'No Rate' %>
+	  <%= f.radio_button :rate, '1' %>
+	  <%= label :rate_first, '1' %>
+	  <%= f.radio_button :rate, '2' %>
+	  <%= label :rate_second, '2' %>
+	  <%= f.radio_button :rate, '3' %>
+	  <%= label :rate_third, '3' %>
+	  <%= f.radio_button :rate, '4' %>
+	  <%= label :rate_fourth, '4' %>
+	  <strong><p>Your Comment: </p></strong>
+	  <%= f.text_area :comment_on_college, size: "60x12", :placeholder => "Comment On This University" %>
+	  <br />
+	  <br />
+	  <%= f.submit "Submit This Rate", class: "testersignup" %>
+	<% end %>
+	<br />
+	<%= button_to "Go to Main Search", "/start", class: "testersignup"%>
+</html>

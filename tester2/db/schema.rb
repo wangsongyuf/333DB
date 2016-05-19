@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518084028) do
+ActiveRecord::Schema.define(version: 20160518183629) do
 
   create_table "CRate", id: false, force: :cascade do |t|
     t.integer "CID",     limit: 4
@@ -23,11 +23,14 @@ ActiveRecord::Schema.define(version: 20160518084028) do
   create_table "College", primary_key: "CID", force: :cascade do |t|
     t.varchar "Name",                         limit: 50
     t.integer "Ranking",                      limit: 4
-    t.money   "Tuition",                                  precision: 19, scale: 4
+    t.money   "Tuition",                                   precision: 19, scale: 4
     t.varchar "FundingOption",                limit: 50
     t.integer "AverageStandardizedTestScore", limit: 4
     t.varchar "InState",                      limit: 20
     t.varchar "AtAddress",                    limit: 500
+    t.string  "url",                          limit: 4000
+    t.decimal "professor_student_ratio",                   precision: 8,  scale: 2
+    t.string  "image_url",                    limit: 4000
   end
 
   add_index "College", ["Name"], name: "College_name"

@@ -66,5 +66,36 @@ class StartingController < ApplicationController
     @result4 = @rslt[3]
     @result5 = @rslt[4]
   end
+  
+  def collegeProfile
+    @collegename = params[:college]
+    @imagurl = params[:imgurl] || nil
+    @connection = ActiveRecord::Base.connection
+    @st1='exec searchcollege '+'@college ='+'\'"'+ @collegename +'"\''
+    @result = @connection.exec_query(@st1)
+  end
+  
+  def rateThisCollege
+    @collegenameforrate = params[:collegename]
+    begin
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue
+      @current_user = nil;
+    end
+    if @current_user
+    if params[:commit] == "Submit This Rate"
+      @connection = ActiveRecord::Base.connection
+      @st1='exec AddCRate '+ '@college ='+'\''+ params[:original] + '\'' + ","
+      @st1 = @st1 + '@username = ' + '\''+ @current_user.username + '\'' + ","
+      @st1 = @st1 + '@rate = ' + params[:starting][:rate] + ","
+      @st1 = @st1 + '@comment = ' + '\'' + params[:starting][:comment_on_college] + '\''
+      @result = @connection.exec_query(@st1)
+      url = '/collegeProfile?college=' + params[:original]
+      redirect_to URI.encode(url)
+    end
+    else
+      redirect_to '/'
+    end
+  end
 end
 

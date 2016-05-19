@@ -116,7 +116,7 @@
   <nav>
          	<% if current_user %> 
 			  <ul> 
-			    Logged In As: <a href="/profile"><%= current_user.username %></a>&nbsp;&nbsp;&nbsp;<%= link_to "Log out", logout_path, method: "delete", :class => "logout"%>
+			    Logged In As: <%= link_to current_user.username, "/profile" %>&nbsp;&nbsp;&nbsp;<%= link_to "Log out", logout_path, method: "delete", :class => "logout"%>
 			
 			    <br />
 			    
@@ -128,7 +128,8 @@
   		
           		<dialog id="window">  
 				    <h3>About Us</h3>  
-				    <p>Some Information about This Project</p>  
+				    <p>This application is offering assistance for applying to graduate schools.</p>
+				    <p>Data are obtained from USNews and the official websites of each school.</p>  
 				    <a href="" id="exit">Close</a>
 				</dialog>
 				

@@ -40,12 +40,25 @@
 		<table style="table-layout: fixed; width:400; border-style: solid;">
 	<tr>
 	<% p.keys.each do |k|%>
+	<% if k != "imgURL"%>
 		<th><%= k %></th>
+	<% end %>
 	<% end %>
 	</tr>
 	<tr>
-	<% p.values.each do |v|%>
-		<td><%= v %></td>
+	<% p.each do |k, v|%>
+	<% if k == "College name"%>
+		<% if !p["imgURL"].nil? %>
+		<td><%= link_to v, "/collegeProfile?college="+ v + "&imgurl=" + p["imgURL"] %></td>
+		<% else %>
+		<td><%= link_to v, "/collegeProfile?college="+ v %></td>
+		<% end %>
+	<% else %>
+	<% if k != "imgURL"%>
+		<td><%= v%></td>
+	<% else %>
+	<% end %>
+	<% end %>
 	<% end %>
 	</tr>
 	  </table>

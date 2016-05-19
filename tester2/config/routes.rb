@@ -130,5 +130,12 @@ Rails.application.routes.draw do
   resources :users
 
   post 'modifyYear' => 'users#modifyYear'
-
+  
+  get 'collegeProfile' => 'starting#collegeProfile'
+  resources :starting
+  
+  get 'rateThisCollege' => 'starting#rateThisCollege'
+  resources :starting
+  
+  post 'rateThisCollege' => 'starting#rateThisCollege'
 end

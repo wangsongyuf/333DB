@@ -42,6 +42,7 @@ class UsersController < ApplicationController
     @result = @connection.exec_query(@st)
   end
 
+
   def destroy_account
     begin
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
