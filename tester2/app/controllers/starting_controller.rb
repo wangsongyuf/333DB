@@ -104,10 +104,15 @@ class StartingController < ApplicationController
     end
     if @current_user
     if params[:commit] == "Submit This Rate"
+      if params[:starting][:rate] == "norate"
+        rating = "NULL"
+      else
+        rating = params[:starting][:rate]
+      end
       @connection = ActiveRecord::Base.connection
       @st1='exec AddCRate '+ '@college ='+'\''+ params[:original] + '\'' + ","
       @st1 = @st1 + '@username = ' + '\''+ @current_user.username + '\'' + ","
-      @st1 = @st1 + '@rate = ' + params[:starting][:rate] + ","
+      @st1 = @st1 + '@rate = ' + rating + ","
       @st1 = @st1 + '@comment = ' + '\'' + params[:starting][:comment_on_college] + '\''
       @result = @connection.exec_query(@st1)
       url = '/collegeProfile?college=' + params[:original]
