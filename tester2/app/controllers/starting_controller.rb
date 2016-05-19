@@ -68,11 +68,31 @@ class StartingController < ApplicationController
   end
   
   def collegeProfile
-    @collegename = params[:college]
-    @imagurl = params[:imgurl] || nil
-    @connection = ActiveRecord::Base.connection
-    @st1='exec searchcollege '+'@college ='+'\'"'+ @collegename +'"\''
-    @result = @connection.exec_query(@st1)
+    begin
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue
+      @current_user = nil;
+    end
+    if @current_user
+      @collegename = params[:college]
+      @imagurl = params[:imgurl] || nil
+      @connection = ActiveRecord::Base.connection
+      @st1='exec searchcollege '+'@college ='+'\'"'+ @collegename +'"\''
+      @st2 = 'exec getRatingAndComments ' + '@college ='+'\''+ @collegename + '\'' + ","
+      @st2 = @st2 + '@username = ' + '\''+ @current_user.username + '\''
+      
+      @st3 = 'exec getPublicComments ' + '@college ='+'\''+ @collegename + '\'' + ","
+      @st3 = @st3 + '@username = ' + '\''+ @current_user.username + '\''
+      
+      @result = @connection.exec_query(@st1)
+      @resultst2 = @connection.exec_query(@st2)
+      @resultst3 = @connection.exec_query(@st3)
+      
+      puts @resultst3
+      
+    else
+      redirect_to '/'
+    end
   end
   
   def rateThisCollege

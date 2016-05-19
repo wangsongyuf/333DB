@@ -131,6 +131,11 @@ Rails.application.routes.draw do
 
   post 'modifyYear' => 'users#modifyYear'
   
+  get 'modifyShowComments' => 'users#modifyShowComments'
+  resources :users
+
+  post 'modifyShowComments' => 'users#modifyShowComments'
+  
   get 'collegeProfile' => 'starting#collegeProfile'
   resources :starting
   

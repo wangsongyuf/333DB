@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160518183629) do
+ActiveRecord::Schema.define(version: 20160519050624) do
 
   create_table "CRate", id: false, force: :cascade do |t|
     t.integer "CID",     limit: 4
@@ -66,11 +66,13 @@ ActiveRecord::Schema.define(version: 20160518183629) do
   end
 
   create_table "ThisUser", primary_key: "UUID", force: :cascade do |t|
-    t.varchar "Username",      limit: 50
-    t.varchar "UPassword",     limit: 50
-    t.varchar "CurrentStatus", limit: 50
+    t.string  "Username",      limit: 4000
+    t.string  "UPassword",     limit: 4000
+    t.string  "CurrentStatus", limit: 4000
     t.integer "AtYear",        limit: 4
     t.string  "firstname",     limit: 4000
+    t.string  "lastname",      limit: 4000
+    t.string  "email",         limit: 4000
   end
 
   create_table "WorkIn", id: false, force: :cascade do |t|
@@ -128,15 +130,16 @@ ActiveRecord::Schema.define(version: 20160518183629) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-    t.string   "first_name",      limit: 4000
-    t.string   "last_name",       limit: 4000
-    t.string   "email",           limit: 4000
-    t.string   "password_digest", limit: 4000
-    t.string   "username",        limit: 4000
-    t.string   "CurrentStatus",   limit: 4000
-    t.integer  "AtYear",          limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "first_name",       limit: 4000
+    t.string   "last_name",        limit: 4000
+    t.string   "email",            limit: 4000
+    t.string   "password_digest",  limit: 4000
+    t.string   "username",         limit: 4000
+    t.string   "CurrentStatus",    limit: 4000
+    t.integer  "AtYear",           limit: 4
+    t.integer  "showYourComments", limit: 4
   end
 
   add_index "users", ["username"], name: "User_name"

@@ -54,9 +54,12 @@
 		<% elsif k.eql?("email")%>
 		<strong>Email</strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href="/modifyEmail" style="size: 10px">Modify Your Email</a><br />
 		
-		
-		
-		
+		<% elsif k.eql?("showYourComments")%>
+		<% if v == 1 %>
+		<strong>You are willing to show your comments</strong>  &nbsp;&nbsp;&nbsp; <a href="/modifyShowComments" style="size: 10px">Show your comments?</a><br />
+		<% else %>
+		<strong>You are not willing to show your comments</strong> &nbsp;&nbsp;&nbsp; <a href="/modifyShowComments" style="size: 10px">Show your comments?</a><br />
+		<% end %>
 		<% else %>
 		<% wheretogo = "/modify" + k %>
 		<strong><%= k %></strong> : <%= v%> &nbsp;&nbsp;&nbsp; <a href=<%= wheretogo%> style="size: 10px">Modify Your <%= k %></a><br />

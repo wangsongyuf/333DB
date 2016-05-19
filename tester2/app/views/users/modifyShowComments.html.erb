@@ -1,0 +1,26 @@
+<html>
+	<div class="login">
+			<div class="container">
+				<h1> <%= @current_user.username%>'s Profile </h1>
+				<div class="form">
+
+					<h1>Do you want to show your comments</h1>
+		
+					<%= form_for(:status) do |f| %>
+					
+					  <%= f.radio_button :showComments, 'no', :checked => true %> 
+					  <%= label :showComments_no, 'No' %>
+					  <%= f.radio_button :showComments, 'yes' %>
+					  <%= label :showComments_yes, 'Yes' %>
+					  <br />
+					  <br />
+					<%= f.submit "Modify", class: "testersignup" %>
+					<br />
+					<br />
+					<%= f.submit "Go to Main", class: "testersignup" %>
+					<% end %>
+
+				</div>
+			</div>
+		</div>
+</html>

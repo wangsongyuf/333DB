@@ -1,7 +1,8 @@
 <html>
-	<h1><%= @collegename%></h1>
+	<h1 align="left"><%= @collegename%></h1>
+	<div class = "Profile" align="left">
 	<% if !@imagurl.nil? %>
-	<img src= <%= @imagurl %> />
+	<img src= <%= @imagurl %> height="200" width="200" />
 	<br />
 	<% end %>
 	<% @result.each do |p| %>
@@ -12,6 +13,20 @@
 			<% end %>
 		<% end %>
 	<% end %>
-
+	
+	<h3>Your Comments on <%= @collegename %></h3>
+	<% @resultst2.each do |p| %>
+		<% p.each do |k, v| %>
+			<li><%= v %></li>
+		<% end %>
+	<% end %>
+	
+	<h3>Public Comments on <%= @collegename %></h3>
+	<% @resultst3.each do |p| %>
+		<li><%= p["Username"]%> : <%= p["Comment"] %></li>
+	<% end %>	
+	<br />
 	<%= button_to "Rate And Comment On This University", "/rateThisCollege?collegename=" + @collegename , class: "testersignup"%>
+	<%= button_to "Go to Main Search", "/start", class: "testersignup"%>
+	</div>
 </html>

@@ -151,6 +151,34 @@ class UsersController < ApplicationController
       redirect_to '/start'
     end
   end
+  
+  def modifyShowComments
+    begin
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue
+      @current_user = nil;
+    end
+    @connection = ActiveRecord::Base.connection
+    @st='exec UpdateShowComments '
+    if params[:commit] == "Modify"
+      if @current_user
+        @st = @st + '@username = ' + '\'' + @current_user.username + '\'' + ','
+      else
+        redirect_to '/'
+      end
+      if params[:status][:showComments] == "yes"
+        show = 1
+      else
+        show = 0
+      end
+      @st = @st + '@show = ' + show.to_s
+      @result = @connection.exec_query(@st)
+      puts @result
+      redirect_to '/profile'
+    elsif params[:commit] == "Go to Main"
+      redirect_to '/start'
+    end
+  end
 
   def modifyUsername
     begin
